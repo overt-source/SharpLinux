@@ -1,5 +1,5 @@
 @echo off
-rem CMDLinux version 1.3 (beta) for MS Windows
+rem CMDLinux version 1.4 (beta) for MS Windows
 timeout /t 1 > .\tmp\bit_bucket
 color 19
 timeout /t 1 > .\tmp\bit_bucket
