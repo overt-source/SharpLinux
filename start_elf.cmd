@@ -16,7 +16,7 @@ echo setting root path variable... >> .\etc\bootlog
 set rootpath.shell=%cd%
 echo done setting root path variable... >> .\etc\bootlog
 echo setting uname variable... >> .\etc\bootlog
-set uname.shell=cmdLinux localhost 1.3.4-29-sandbox #1-sandbox Mon Dec 19 16:15:02 NZST 2016 %processor_architecture% CMD/Linux
+set uname.shell=cmdLinux localhost 1.4.1-01-sandbox #1-sandbox Tue Dec 20 12:01:02 NZST 2016 %processor_architecture% CMD/Linux
 echo done setting uname variable... >> .\etc\bootlog
 echo starting login process... >> .\etc\bootlog
 call .\bin\login.cmd
