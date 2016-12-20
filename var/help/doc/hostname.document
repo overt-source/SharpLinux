@@ -1,0 +1,5 @@
+hostname: display the system's hostname
+
+Displays the system's cmdlinux and external hostnames.
+No parameters are supported.
+Version: 1.1

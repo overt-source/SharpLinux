@@ -1,0 +1,5 @@
+CDUP: change directory upwards
+
+moves to the previous directory.
+No parameters are supported.
+Version: 1.0
