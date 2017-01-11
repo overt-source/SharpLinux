@@ -10,10 +10,16 @@ CMDLinux was inspired by the reimplementations of GNU utilities and other thoigs
 * some form of a login system
 * primitive privilege seperation
 * basic filesystem commands
+
+
 ## Things that don't:
+
+
 * the package manager (currently a stub).
 * text editing (need to find nano for windows).
 * Everything else
+
+
 ## Build instructions:
 Simply clone the repository, then run start_elf from a command line where the repo appeared. The default (root) password is bluebox, and the hostname is crossbar.
 Enjoy!
