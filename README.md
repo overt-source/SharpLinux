@@ -8,6 +8,7 @@ CMDLinux was inspired by the reimplementations of GNU utilities and other thoigs
 * application execution
 * documentation files
 * some form of a login system
+* adding users
 * primitive privilege seperation
 * basic filesystem commands
 
@@ -17,6 +18,7 @@ CMDLinux was inspired by the reimplementations of GNU utilities and other thoigs
 
 * the package manager (currently a stub).
 * text editing (need to find nano for windows).
+* removing users that you added (use rm-d for now).
 * Everything else
 
 
