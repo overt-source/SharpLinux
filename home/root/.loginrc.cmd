@@ -7,4 +7,4 @@ set shell=sh
 set shebang=#
 cd %rootpath.shell%\home\%username.shell%\
 set command.shell=undefined
-call "%rootpath.shell%\bin\%shell%.cmd"
+call "%rootpath.shell%\bin\%shell%"

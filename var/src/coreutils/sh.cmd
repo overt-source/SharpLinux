@@ -13,22 +13,22 @@ if %command.shell% == login (
 echo sh: 'login': not login shell., logout maybe?
 goto entry
 )
-if exist "%rootpath.shell%\bin\%command.shell%.cmd" (
+if exist "%rootpath.shell%\bin\%command.shell%.exe" (
 set did_do=1
-call "%rootpath.shell%\bin\%command.shell%.cmd"
+call "%rootpath.shell%\bin\%command.shell%.exe"
 goto entry
 )
-if exist "%rootpath.shell%\sbin\%command.shell%.cmd" (
+if exist "%rootpath.shell%\sbin\%command.shell%.exe" (
 set did_do=1
 if %username.shell%==root (
-call "%rootpath.shell%\sbin\%command.shell%.cmd"
+call "%rootpath.shell%\sbin\%command.shell%.exe"
 )
 echo not sufficient privilages: %command.shell% needs root.
 goto entry
 )
-if exist "%rootpath.shell%\opt\%command.shell%\bin\%command.shell%.cmd" (
+if exist "%rootpath.shell%\opt\%command.shell%\bin\%command.shell%.exe" (
 set did_do=1
-call "%rootpath.shell%\opt\%command.shell%\bin\%command.shell%.cmd"
+call "%rootpath.shell%\opt\%command.shell%\bin\%command.shell%.exe"
 goto entry
 )
 echo %command.shell%: command not found
