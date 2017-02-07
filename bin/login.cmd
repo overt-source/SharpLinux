@@ -39,6 +39,7 @@ cls
 goto:username
 :loginscript
 echo running /home/%username.shell%/.loginrc...
+cls
 call "%rootpath.shell%\home\%username.shell%\.loginrc.cmd"
 goto:eof
 :wrongpass
