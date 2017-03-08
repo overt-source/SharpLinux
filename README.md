@@ -24,5 +24,5 @@ CMDLinux was inspired by the reimplementations of GNU utilities and other things
 
 
 ## Build instructions:
-Simply clone the repository, then run claunch.exe with params kernel filename and root dir from a command line where the repo appeared. The default (root) password is bluebox, and the hostname is crossbar.
+Simply clone the repository, then run claunch.exe with params kernel filename )default: \sbin\init) and root dir (default: %cd%) from a command line where the repo appeared. The default (root) password is bluebox, and the hostname is crossbar.
 Enjoy!
