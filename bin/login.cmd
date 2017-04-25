@@ -2,7 +2,7 @@
 rem CMDLinux Login module version 1.0
 echo login: determining hostname... >> "%rootpath.shell%\etc\bootlog"
 set /p hostname.shell=< "%rootpath.shell%\etc\hostname"
-echo hostname is %hostname.shell% >> "%rootpath.shell%\etc\bootlog"
+echo login: hostname is %hostname.shell% >> "%rootpath.shell%\etc\bootlog"
 
 color 17
 cls

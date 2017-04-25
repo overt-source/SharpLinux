@@ -22,8 +22,9 @@ if exist "%rootpath.shell%\sbin\%command.shell%.cmd" (
 set did_do=1
 if %username.shell%==root (
 call "%rootpath.shell%\sbin\%command.shell%.cmd"
+gotoentry
 )
-echo not sufficient privilages: %command.shell% needs root.
+echo sorry, NoExec for %command.shell%: not root
 goto entry
 )
 if exist "%rootpath.shell%\opt\%command.shell%\bin\%command.shell%.cmd" (
