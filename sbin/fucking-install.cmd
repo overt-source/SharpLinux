@@ -1,13 +1,10 @@
 @echo off
 echo fucking - a high-level package manager for the CMDLinux Operating system
-rem check for curl/wget
-rem we need this across all binaries
-if exist "%rootpath.shell%\lib\curl.exe" goto main
-if exist "%rootpath.shell%\lib\wget.exe" goto main
-if not exist "%rootpath.shell%\lib\curl.exe" goto liberror
-if not exist "%rootpath.shell%\lib\wget.exe" goto liberror
+rem check for libwebget
+if exist "%rootpath.shell%\lib\libwebget.module" goto main
+if not exist "%rootpath.shell%\lib\libwebget.module" goto liberror
 :liberror
-echo fucking: E: 1, in init.install, failed to locate network access libraries in /lib
+echo fucking: ERROR_NO_LIBRARYS - how are we going to access the internet?
 goto:eof
 :main
 set /p fuckingsource.shell=< %rootpath.shell%\etc\fucking\source
