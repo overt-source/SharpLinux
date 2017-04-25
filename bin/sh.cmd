@@ -22,7 +22,7 @@ if exist "%rootpath.shell%\sbin\%command.shell%.cmd" (
 set did_do=1
 if %username.shell%==root (
 call "%rootpath.shell%\sbin\%command.shell%.cmd"
-gotoentry
+goto entry
 )
 echo sorry, NoExec for %command.shell%: not root
 goto entry
