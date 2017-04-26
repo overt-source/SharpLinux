@@ -2,4 +2,4 @@ CDUP: change directory upwards
 
 moves to the previous directory.
 No parameters are supported.
-Version: 1.02
+Version: 2.0

@@ -1,0 +1,6 @@
+RM: Remove File
+
+Removes the specified file.
+One parameter:
+Filename: (string): The file to remove.
+version: 2.0
