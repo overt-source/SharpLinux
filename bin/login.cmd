@@ -16,6 +16,9 @@ echo ENTER USERNAME (OK=enter cancel=^C)
 set /p username.shell=:
 if %username.shell% == adduser goto adduser
 echo determining home directory for %username.shell%...
+if %username.shell% == ..\etc\skell (
+echo Bad Username.
+goto:username)
 if exist "%rootpath.shell%\home\%username.shell%\.allowed_login" goto password
 if not exist "%rootpath.shell%\home\%username.shell%\.allowed_login" goto notallowed
 :password
