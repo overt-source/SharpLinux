@@ -3,6 +3,7 @@
 Cmdlinux is an open-source, compact, and familiar linux-style command userspace for windows.
 CMDLinux was inspired by the reimplementations of GNU utilities and other things done by cygwin, etc.
 ## Things that work:
+* startup again
 * The SH (esque) shell
 * command detection
 * application execution
@@ -11,18 +12,17 @@ CMDLinux was inspired by the reimplementations of GNU utilities and other things
 * adding users
 * primitive privilege seperation
 * basic filesystem commands
+* parts of the package manager
 
 
 
 ## Things that don't:
 
-* Booting, after git stole my launcher (how rude!)
-* the package manager (currently a stub).
 * text editing (need to find nano for windows).
 * removing users that you added (use rm-d for now).
 * Everything else
 
 
 ## Build instructions:
-Simply clone the repository, then run claunch.exe with params kernel filename )default: \sbin\init) and root dir (default: %cd%) from a command line where the repo appeared. The default (root) password is bluebox, and the hostname is crossbar.
+Simply clone the repository, then run init from the repo's working dir.
 Enjoy!

@@ -18,5 +18,14 @@ echo fucking: fatal: %fucking.package.name%: NOT A PACKAGE IDENTIFYER, OR NOT IN
 echo fucking: If you're sure it's there, do fucking-update to make sure we have the latest
 echo fucking: packages.
 echo fucking exited with error code: 2
+goto:eof
 )
+:install
+echo fucking: looking up package...
+set /p fucking.package.version=<%rootpath.shell%\etc\fucking\packages\%fucking.package.name%\version.string
+set /p fucking.package.author=<%rootpath.shell%\etc\fucking\packages\%fucking.package.name%\author.string
+set /p fucking.package.description=<%rootpath.shell%\etc\fucking\packages\%fucking.package.name%\info.textblock
+cls
+echo Fucking: package identifyed (%fucking.package.name%:%fucking.package.version%).
+choice /d i /n /c ida /m "(I)nstall, (D)etails, (A)bort - (Install in 20 seconds)" /t 20
 goto:eof
