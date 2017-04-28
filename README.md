@@ -1,4 +1,5 @@
 # CMDLinux: A basic, linux-like operating system userspace for windows
+###### Version 2.2.1
 ## Welcoem to CMDLinux!
 Cmdlinux is an open-source, compact, and familiar linux-style command userspace for windows.
 CMDLinux was inspired by the reimplementations of GNU utilities and other things done by cygwin, etc.
@@ -10,7 +11,7 @@ CMDLinux was inspired by the reimplementations of GNU utilities and other things
 * documentation files
 * some form of a login system
 * adding users
-* primitive privilege seperation
+* basic user rights access
 * basic filesystem commands
 * parts of the package manager
 
