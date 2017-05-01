@@ -8,6 +8,8 @@ goto entry
 )
 if %command.shell% == exit (
 echo logout
+color
+title CMD.EXE
 goto:eof
 )
 if %command.shell% == login (
