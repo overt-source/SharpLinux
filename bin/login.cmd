@@ -4,7 +4,7 @@ echo login: determining hostname... >> "%rootpath.shell%\etc\bootlog"
 set /p hostname.shell=< "%rootpath.shell%\etc\hostname"
 echo login: hostname is %hostname.shell% >> "%rootpath.shell%\etc\bootlog"
 
-color 17
+color 1f
 cls
 :username
 echo TTY1 CMDLinux %hostname.shell%
