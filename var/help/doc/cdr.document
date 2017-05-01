@@ -1,0 +1,6 @@
+CDR: Change Directory Relative
+
+Moves focus to the specified directory relative to the current working directory
+One parameter:
+Directory: (string): The directory to select.
+version: 1.0

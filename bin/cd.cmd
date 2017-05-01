@@ -1,5 +1,5 @@
 @echo off
-set /p dir.shell=Move to?
-cd %rootpath.shell%%dir.shell% 2> %rootpath.shell%\tmp\bit_bucket
+set /p dir.shell=?
+cd %rootpath.shell%\%dir.shell%
 if not %errorlevel% == 1 goto:eof
-echo failed to move to %dir.shell%
+echo CD: %dir.shell%: no such file or directory

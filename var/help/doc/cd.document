@@ -1,6 +1,6 @@
 CD: Change Directory
 
-Moves focus to the specified directory
+Moves focus to the specified directory (directory interpreted as from /).
 One parameter:
 Directory: (string): The directory to select.
-version: 2.0
+version: 2.1
