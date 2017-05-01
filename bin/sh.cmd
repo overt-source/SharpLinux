@@ -27,7 +27,7 @@ if %username.shell%==root (
 call "%rootpath.shell%\sbin\%command.shell%.cmd"
 goto entry
 )
-echo sorry, NoExec for %command.shell%: not root
+echo sorry, exec for %command.shell% not permitted: non-0 uid ^(try su?^)
 goto entry
 )
 if exist "%rootpath.shell%\opt\%command.shell%\bin\%command.shell%.cmd" (
@@ -35,5 +35,5 @@ set did_do=1
 call "%rootpath.shell%\opt\%command.shell%\bin\%command.shell%.cmd"
 goto entry
 )
-echo %command.shell%: command not found
+echo SH: %command.shell%: command not found
 goto entry
