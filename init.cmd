@@ -3,11 +3,11 @@ rem CMDLinux kernel startup script.
 rem THIS SCRIPT SHOULD NOT BE MODIFIED BY
 rem PEOPLE WHO DON'T KNOW WHAT THEY'RE DOING!
 title CMDLinux starting...
-set version.shell=2.2.1
-set CompileTime.shell=2017-04-29t20:46:31+12:00
+set version.shell=2.2.2
+set CompileTime.shell=2017-05-01t14:39:15+12:00
 set codename.shell=mariah
-set buildid.shell=221
-set build.shell=0006
+set buildid.shell=222
+set build.shell=0001
 echo STARTING CMDLinux (%processor_architecture%):%processor_revision%
 echo on-line CPUs: %number_of_processors%
 set rootpath.shell=%cd%
