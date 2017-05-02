@@ -1,9 +1,13 @@
 @echo off
-set /p rm.shell=remove which? 
+set /p rm.shell=? 
 if not exist %rm.shell% (
-echo "failed to remove: %rm.shell% - does it exist?"
+echo RM: %rm.shell%: no such file or directory
+goto:eof
+)
+if not exist %rootpath.shell%%rm.shell% (
+echo RM: %rm.shell%: no such file or directory
 goto:eof
 )
 
-del /q %rm.shell% 2> %rootpath.shell%\tmp\bit_bucket
-del /q %rootpath.shell%%rm.shell% 2> %rootpath.shell%\tmp\bit_bucket
+del /q %rm.shell%
+del /q %rootpath.shell%%rm.shell%

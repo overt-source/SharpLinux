@@ -2,6 +2,9 @@
 :entry
 set /p command.shell=SH-2.3%shebang%
 title %username.shell%@%hostname.shell% : %cd%
+if %command.shell% == undefined (
+goto:entry
+)
 if %command.shell% == sh (
 echo Can't spawn child with recursive parent.
 goto entry
