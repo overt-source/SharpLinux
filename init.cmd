@@ -10,12 +10,12 @@ set buildid.shell=223
 set build.shell=15
 echo STARTING CMDLinux (%processor_architecture%):%processor_revision%
 echo on-line CPUs: %number_of_processors%
-if exist C:\Program Files\Git\usr\bin\tar.exe (
+if exist "C:\Program Files\Git\usr\bin\tar.exe" (
 set rootpath.shell=%cd%
 timeout /t 6 >> %rootpath.shell%\etc\bootlog
 echo Welcome to CMDLinux!
-echo CMDLinux %version.shell% %codename.shell%:(%buildid.shell%.%build.shell%/%processor_architecture%-windows-master) %CompileTime.shell%, %processor_architecture% Cmdlinux
-set uname.shell=CMDLinux %version.shell% %codename.shell%:(%buildid.shell%.%build.shell%/%processor_architecture%-windows-master) %CompileTime.shell%, %processor_architecture% Cmdlinux
+echo CMDLinux %version.shell% %codename.shell%:^(%buildid.shell%.%build.shell%/%processor_architecture%-windows-master^) %CompileTime.shell%, %processor_architecture% Cmdlinux
+set uname.shell=CMDLinux %version.shell% %codename.shell%:^(%buildid.shell%.%build.shell%/%processor_architecture%-windows-master^) %CompileTime.shell%, %processor_architecture% Cmdlinux
 call %rootpath.shell%\bin\login
 goto:eof
 )
