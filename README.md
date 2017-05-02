@@ -3,6 +3,8 @@
 ## Welcoem to CMDLinux!
 Cmdlinux is an open-source, compact, and familiar linux-style command userspace for windows.
 CMDLinux was inspired by the reimplementations of GNU utilities and other things done by cygwin, etc.
+# WARNING:
+CMDLinux needs git for windows and the GNU CoreUtils that come with it to function correctly, and will not start without them.
 ## Things that work:
 * startup again
 * The SH (esque) shell
