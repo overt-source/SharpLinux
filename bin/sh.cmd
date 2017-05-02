@@ -1,6 +1,6 @@
 @echo off
 :entry
-set /p command.shell=%username.shell%@%hostname.shell%:%cd%%shebang%
+set /p command.shell=SH-2.3%shebang%
 title %username.shell%@%hostname.shell% : %cd%
 if %command.shell% == sh (
 echo Can't spawn child with recursive parent.
