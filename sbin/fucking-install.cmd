@@ -1,8 +1,8 @@
 @echo off
 echo fucking - a high-level package manager for the CMDLinux Operating system
 rem check for libwebget
-if exist "%rootpath.shell%\lib\libwebget.module" goto main
-if not exist "%rootpath.shell%\lib\libwebget.module" goto liberror
+if exist "%rootpath.shell%\libexec\libwebget.module" goto main
+if not exist "%rootpath.shell%\libexec\libwebget.module" goto liberror
 :liberror
 echo fucking: ERROR_NO_LIBRARYS - how are we going to access the internet?
 goto:eof
