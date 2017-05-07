@@ -10,6 +10,7 @@ string shver="3.0.0-2017-07-05";
 string WhoAmI = Environment.GetEnvironmentVariable("username.shell");
 string PermissionToken = Environment.GetEnvironmentVariable("shebang");
 string RootPath = Environment.GetEnvironmentVariable("rootpath.shell");
+string parameters="";
 // done with that.
 // Tell the user who we are:
 Console.WriteLine("Welcome to TinyShell!\r\nFor a list of the commands installed on your system, type:\r\nHELP\r\nFor information about this shell, type:\r\ntshver\r\n");
@@ -63,15 +64,31 @@ Console.Write("Terminate TinyShell and logout? y - n   : ");
 string ExitChoice=Console.ReadLine();
 if(ExitChoice=="y") {
 Console.WriteLine("LOGOUT");
-System.Threading.Thread.Sleep(1200);
+System.Threading.Thread.Sleep(200);
 Console.Clear();
+Environment.Exit(0);
 }
 else {
 goto PromptyGoodness;
 }
 
 }
+// here we look for and run whatever the user asked for, in a few places.
+if(File.Exists(""+RootPath+"\\bin\\"+Exec_Exec[0]+".exe")) {
 
+// Do some sorta magical magicalness to concat the parameters.
+if(String.IsNullOrEmpty(Exec_Exec[1])) {
+parameters=parameters+Exec_Exec[1];
+}
+
+if(!String.IsNullOrEmpty(Exec_Exec[2])) {
+parameters=parameters+Exec_Exec[2];
+}
+Console.WriteLine(parameters);
+}
+
+Console.WriteLine("TSh: "+Exec_Exec[0]+": Not Found");
+goto PromptyGoodness;
 }
 }
 }
