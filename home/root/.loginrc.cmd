@@ -3,7 +3,7 @@ rem in here (.loginrc) you can set
 rem variables, your shell, etc
 rem see doc loginrc for more info.
 
-set shell=sh
+set shell=tsh
 set shebang=#
 cd %rootpath.shell%\home\%username.shell%\
 set command.shell=undefined
