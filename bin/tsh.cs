@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Diagnostics;
 namespace CMDLinux
 {
 class sh
@@ -10,7 +11,8 @@ string shver="3.0.0-2017-07-05";
 string WhoAmI = Environment.GetEnvironmentVariable("username.shell");
 string PermissionToken = Environment.GetEnvironmentVariable("shebang");
 string RootPath = Environment.GetEnvironmentVariable("rootpath.shell");
-string parameters="";
+string binary;
+string binary_parameters;
 // done with that.
 // Tell the user who we are:
 Console.WriteLine("Welcome to TinyShell!\r\nFor a list of the commands installed on your system, type:\r\nHELP\r\nFor information about this shell, type:\r\ntshver\r\n");
@@ -20,7 +22,7 @@ Console.Write("Sh-3.0-testing\r\n{0}", PermissionToken);
 string Exec;
 Exec=Console.ReadLine();
 // split this bitch.
-string[] Exec_Exec=Exec.Split(' ');
+string[] Exec_Exec=Exec.Split(';');
 // some basic checks to make sure the user isn't doing insane, demonic things.
 if(Exec_Exec[0]=="tsh") {
 Console.WriteLine("TSH: Recursive shellCall.");
@@ -75,16 +77,23 @@ goto PromptyGoodness;
 }
 // here we look for and run whatever the user asked for, in a few places.
 if(File.Exists(""+RootPath+"\\bin\\"+Exec_Exec[0]+".exe")) {
-
-// Do some sorta magical magicalness to concat the parameters.
-if(String.IsNullOrEmpty(Exec_Exec[1])) {
-parameters=parameters+Exec_Exec[1];
+binary=Exec_Exec[0];
+try {
+binary_parameters=Exec_Exec[1];
 }
-
-if(!String.IsNullOrEmpty(Exec_Exec[2])) {
-parameters=parameters+Exec_Exec[2];
+catch(Exception EX) {
+string LastError=EX;
+binary_parameters="";
 }
-Console.WriteLine(parameters);
+var p = new Process();
+p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+".exe", "binary_parameters" ) 
+        {
+            UseShellExecute = false
+        };
+
+    p.Start();
+    p.WaitForExit();
+goto PromptyGoodness;
 }
 
 Console.WriteLine("TSh: "+Exec_Exec[0]+": Not Found");
