@@ -29,6 +29,7 @@ Environment.SetEnvironmentVariable("uname.sl", identifyer);
 Console.WriteLine("I: Starting SharpLinux...");
 Console.WriteLine("I: "+identifyer+"");
 Console.WriteLine("I: Verifying file structure...");
+// see if /bin/login lives.
 // if(!File.Exists()
 }
 }
