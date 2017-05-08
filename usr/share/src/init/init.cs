@@ -55,6 +55,7 @@ UseShellExecute = false
 };
 
 LoginBin.Start();
+LoginBin.WaitForExit();
 
 }
 }
