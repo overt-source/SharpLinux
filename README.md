@@ -1,26 +1,23 @@
-# CMDLinux: A basic, linux-like operating system userspace for windows
-###### Version 2.2.2-MARIAH
-## Welcoem to CMDLinux!
-Cmdlinux is an open-source, compact, and familiar linux-style command userspace for windows.
-CMDLinux was inspired by the reimplementations of GNU utilities and other things done by cygwin, etc.
-# WARNING:
-CMDLinux needs git for windows and the GNU CoreUtils that come with it to function correctly, and will not start without them.
+# SharpLinux: A linux-like operating system userspace for windows
+###### Version 0.1-LEILU (beta)
+## Welcoem to SharpLinux!
+SharpLinux is an open-source, compact, and familiar linux-style command userspace for windows.
+It was inspired by the reimplementations of GNU utilities and other things done by cygwin, etc. It may never (and will never) be as feature-complete, but it wasn't designed to be.
 ## Things that work:
-* startup again
-* The SH (esque) shell
+* The shell - /bin/tsh
 * command detection
 * application execution
+
+
+
+## Things that don't:
+
 * documentation files
 * some form of a login system
 * adding users
 * basic user rights access
 * basic filesystem commands
 * parts of the package manager
-
-
-
-## Things that don't:
-
 * text editing (need to find nano for windows).
 * removing users that you added (use rm-d for now).
 * Everything else
