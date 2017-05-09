@@ -1,14 +1,11 @@
 using System;
 using System.IO;
 using System.Diagnostics;
-using System.Security.Cryptography;
-using System.Text;
-using System.Collections.Generic;
 namespace cmdlinux {
 class login {
 static void Main() {
 // wait 2 seconds to let the user see kernel messages.
-System.Threading.Thread.Sleep(7000);
+System.Threading.Thread.Sleep(2000);
 Console.Clear();
 // set up some strings based on variables that init helpfully setup for us:
 string LoginHostSource=Environment.GetEnvironmentVariable("hostname.sl");
@@ -26,10 +23,6 @@ goto Username;
 }
 Console.Write("Password:");
 string password=ReadPassword();
-// We have the username, which lives, and the password.
- // so now we check if the password is what it really is.
-// Sorry, but the passwords are in plaintext,
-// please go kindly suck it.
 }
      public static string ReadPassword()
         {
@@ -39,7 +32,7 @@ string password=ReadPassword();
             {
                 if (info.Key != ConsoleKey.Backspace)
                 {
-                    Console.Write("");
+                    Console.Write("*");
                     password += info.KeyChar;
                 }
                 else if (info.Key == ConsoleKey.Backspace)
