@@ -4,7 +4,8 @@
 SharpLinux is an open-source, compact, and familiar linux-style command userspace for windows.
 It was inspired by the reimplementations of GNU utilities and other things done by cygwin, etc. It may never (and will never) be as feature-complete, but it wasn't designed to be.
 ## Things that work:
-* The shell - /bin/tsh
+* the init binary
+* The shell - /bin/tsh (if you can get it running without logging in).
 * command detection
 * application execution
 
