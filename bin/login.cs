@@ -8,12 +8,15 @@ static void Main() {
 System.Threading.Thread.Sleep(2000);
 Console.Clear();
 // set up some strings based on variables that init helpfully setup for us:
+
 string LoginHostSource=Environment.GetEnvironmentVariable("hostname.sl");
 // this one's needed across all apps.
 string rootpath=Environment.GetEnvironmentVariable("rootpath.sl");
+string motd=File.ReadAllText(""+rootpath+"\\etc\\motd");
 // strip crlf from /etc/hostname
 string LoginHost = System.Text.RegularExpressions.Regex.Replace(LoginHostSource, @"\t|\n|\r", "");
 Username:
+Console.WriteLine(motd);
 Console.Write(""+LoginHost+" Login:");
 string username=Console.ReadLine();
 if(!Directory.Exists(""+rootpath+"\\home\\"+username+"")) {
