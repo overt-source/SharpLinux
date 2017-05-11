@@ -7,8 +7,8 @@ static void Main() {
 // wait 2 seconds to let the user see kernel messages.
 System.Threading.Thread.Sleep(2000);
 Console.Clear();
-// set up some strings based on variables that init helpfully setup for us:
-
+// set up some strings
+string passwordSha;
 string LoginHostSource=Environment.GetEnvironmentVariable("hostname.sl");
 // this one's needed across all apps.
 string rootpath=Environment.GetEnvironmentVariable("rootpath.sl");
@@ -26,6 +26,28 @@ goto Username;
 }
 Console.Write("Password:");
 string password=ReadPassword();
+Console.WriteLine("Verifying...");
+var libSha = new Process();
+libSha.StartInfo = new ProcessStartInfo( ""+rootpath+"\\libexec\\libSha.exe" ) 
+{
+        Arguments = password,
+        UseShellExecute = false,
+        RedirectStandardOutput = true,
+        CreateNoWindow = true
+};
+
+libSha.Start();
+
+while (!libSha.StandardOutput.EndOfStream) {
+Environment.SetEnvironmentVariable("passwordSha.sl", libSha.StandardOutput.ReadLine());
+// now we have the sha of the password that the user entered.
+// for debugging purposes, we'll print it.
+
+}
+passwordSha=Environment.GetEnvironmentVariable("passwordSha.sl");
+Environment.SetEnvironmentVariable("passwordSha.sl", "");
+Console.WriteLine(passwordSha);
+
 }
      public static string ReadPassword()
         {
