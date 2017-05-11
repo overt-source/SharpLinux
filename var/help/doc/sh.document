@@ -1,7 +1,0 @@
-SH (default command line shell) for CMDLinux.
-
-Executes typed commands, programs, or scripts.
-SH or alternatives are executed by your .loginrc.
-(see doc loginrc for more info)	
-No parameters are supported.
-Version: 2.3
