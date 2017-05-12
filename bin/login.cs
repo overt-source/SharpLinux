@@ -19,6 +19,21 @@ Username:
 Console.WriteLine(motd);
 Console.Write(""+LoginHost+" Login:");
 string username=Console.ReadLine();
+if(username.Contains(".")) {
+Console.WriteLine("Login incorrect");
+goto Username;
+}
+if(username.Contains("/")) {
+Console.WriteLine("Login incorrect");
+goto Username;
+}
+if(username.Contains("\\")) {
+Console.WriteLine("Login incorrect");
+goto Username;
+}
+if(username=="") {
+goto Username;
+}
 if(!Directory.Exists(""+rootpath+"\\home\\"+username+"")) {
 Console.WriteLine("Bad Username: "+username+"");
 System.Threading.Thread.Sleep(100);
