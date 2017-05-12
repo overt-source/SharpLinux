@@ -41,12 +41,21 @@ libSha.Start();
 while (!libSha.StandardOutput.EndOfStream) {
 Environment.SetEnvironmentVariable("passwordSha.sl", libSha.StandardOutput.ReadLine());
 // now we have the sha of the password that the user entered.
-// for debugging purposes, we'll print it.
 
 }
 passwordSha=Environment.GetEnvironmentVariable("passwordSha.sl");
 Environment.SetEnvironmentVariable("passwordSha.sl", "");
-Console.WriteLine(passwordSha);
+// now we have the sha of the password, let's see if it is the sha of the user's actual password by reading ~/.passwd.
+string passwordShaCompare =File.ReadAllText(""+rootpath+"\\"+username+"\\.passwd");
+// do login things.
+if(passwordSha == passwordShaCompare) {
+Console.WriteLine("Nothing from here.");
+Environment.Exit(1);
+
+}
+// if the user got here, they failed to authenticate
+Console.WriteLine("Login incorrect.");
+goto Username;
 
 }
      public static string ReadPassword()
