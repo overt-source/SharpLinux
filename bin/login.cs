@@ -8,6 +8,9 @@ static void Main() {
 System.Threading.Thread.Sleep(2000);
 Console.Clear();
 // set up some strings
+string passwordShaCompare;
+string shell;
+string shebang;
 string passwordSha;
 string LoginHostSource=Environment.GetEnvironmentVariable("hostname.sl");
 // this one's needed across all apps.
@@ -64,14 +67,30 @@ Environment.SetEnvironmentVariable("passwordSha.sl", libSha.StandardOutput.ReadL
 passwordSha=Environment.GetEnvironmentVariable("passwordSha.sl");
 Environment.SetEnvironmentVariable("passwordSha.sl", "");
 // now we have the sha of the password, let's see if it is the sha of the user's actual password by reading ~/.passwd.
-string passwordShaCompare =File.ReadAllText(""+rootpath+"\\"+username+"\\.passwd");
+try {
+passwordShaCompare =File.ReadAllText(""+rootpath+"\\home\\"+username+"\\.passwd");
+}
+catch(System.IO.DirectoryNotFoundException EX) {
+Console.WriteLine("No password file or I/O error "+EX.HResult+": "+EX.Message+"");
+goto Username;
+}
 // do login things.
 if(passwordSha == passwordShaCompare) {
 // yah! they logged in!
 // oh wait, we don't have login code
-Console.WriteLine("Nothing from here.");
-Environment.Exit(1);
+// Or do we!
+// oh yes, we do does!
+// let's do some things.
+// such as...
+Console.Clear();
+if(username == "root") {
+shebang="#";
+}
+else {
+shebang="$";
 
+}
+Console.WriteLine("Prompt: THS-0.1"+shebang+"");
 }
 // if the user got here, they failed to authenticate
 Console.WriteLine("Login incorrect.");
