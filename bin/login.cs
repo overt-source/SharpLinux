@@ -15,23 +15,26 @@ string rootpath=Environment.GetEnvironmentVariable("rootpath.sl");
 string motd=File.ReadAllText(""+rootpath+"\\etc\\motd");
 // strip crlf from /etc/hostname
 string LoginHost = System.Text.RegularExpressions.Regex.Replace(LoginHostSource, @"\t|\n|\r", "");
-Username:
 Console.WriteLine(motd);
+Username:
+
 Console.Write(""+LoginHost+" Login:");
 string username=Console.ReadLine();
+// couple of exploit stoppy things
 if(username.Contains(".")) {
-Console.WriteLine("Login incorrect");
+
 goto Username;
 }
 if(username.Contains("/")) {
-Console.WriteLine("Login incorrect");
+Console.WriteLine("Illegal username");
 goto Username;
 }
 if(username.Contains("\\")) {
-Console.WriteLine("Login incorrect");
+Console.WriteLine("Illegal username");
 goto Username;
 }
 if(username=="") {
+Console.WriteLine("Illegal username");
 goto Username;
 }
 if(!Directory.Exists(""+rootpath+"\\home\\"+username+"")) {
@@ -64,6 +67,8 @@ Environment.SetEnvironmentVariable("passwordSha.sl", "");
 string passwordShaCompare =File.ReadAllText(""+rootpath+"\\"+username+"\\.passwd");
 // do login things.
 if(passwordSha == passwordShaCompare) {
+// yah! they logged in!
+// oh wait, we don't have login code
 Console.WriteLine("Nothing from here.");
 Environment.Exit(1);
 
