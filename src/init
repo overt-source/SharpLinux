@@ -12,8 +12,8 @@ using System;
 	string product = "SharpLinux";
       string version = "0.1";
       string codename = "Leilu";
-      string builddate = "2017-05-12";
-      string buildid = "1705120024";
+      string builddate = "2017-05-14";
+      string buildid = "1705140012";
       string machinetype =
 	Environment.GetEnvironmentVariable ("processor_architecture");
       string buildhost = "Medusa-Cascade";
