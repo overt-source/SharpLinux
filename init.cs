@@ -43,7 +43,7 @@ using System;
       
 // see if /bin/login lives.
 // actually, we see if it doesn't, and quit if so.
-	if (!File.Exists ("" + rootpath + "\\bin\\login.exe"))
+	if (!File.Exists ("" + rootpath + "\\bin\\login."))
 	
 	{
 	  Console.WriteLine ("E: Missing Crucial file.");
@@ -59,7 +59,7 @@ using System;
       Console.WriteLine ("TTY1 SharpLinux {0}", hostname);
       var LoginBin = new Process ();
       LoginBin.StartInfo =
-	new ProcessStartInfo ("" + rootpath + "\\bin\\login.exe") 
+	new ProcessStartInfo ("" + rootpath + "\\bin\\login") 
       {
       UseShellExecute = false  };
        LoginBin.Start ();

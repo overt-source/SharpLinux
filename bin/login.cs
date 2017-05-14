@@ -83,7 +83,11 @@ if(passwordSha == passwordShaCompare) {
 // let's do some things.
 // such as...
 Console.Clear();
+Console.Beep(650,40);
+Console.Beep(480,40);
+Console.Beep(960,40);
 if(username == "root") {
+Console.Beep(960,40);
 shebang="#";
 }
 else {
@@ -91,9 +95,13 @@ shebang="$";
 
 }
 Console.WriteLine("Prompt: THS-0.1"+shebang+"");
+Environment.Exit(0);
 }
 // if the user got here, they failed to authenticate
 Console.WriteLine("Login incorrect.");
+Console.Beep(800,100);
+Console.Beep(400,100);
+
 goto Username;
 
 }
@@ -106,6 +114,7 @@ goto Username;
                 if (info.Key != ConsoleKey.Backspace)
                 {
                     Console.Write("*");
+                    Console.Beep(400,30);
                     password += info.KeyChar;
                 }
                 else if (info.Key == ConsoleKey.Backspace)
