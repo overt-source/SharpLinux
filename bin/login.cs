@@ -48,7 +48,7 @@ goto Username;
 }
 // password entry logic
 Console.Write("Password:");
-// deligate password entry to the ReadPassword() method for seurity.
+// deligate password entry to the ReadPassword() method for security.
 string password=ReadPassword();
 // instantiate libSha for password verification
 Console.Clear();
@@ -78,7 +78,7 @@ passwordShaCompare =File.ReadAllText(""+rootpath+"\\home\\"+username+"\\.passwd"
 }
 // catch users who don't have password files (non-interactive entities):
 catch(System.IO.DirectoryNotFoundException EX) {
-Console.WriteLine("You don't exist, Go away!");
+Console.WriteLine("You don't exist. Go away!");
 // old unix error message.
 goto Username;
 }
@@ -110,7 +110,7 @@ goto Username;
             {
                 if (info.Key != ConsoleKey.Backspace)
                 {
-                    Console.Write("*");
+                    Console.Write(" ");
                     Console.Beep(11100,3);
                     password += info.KeyChar;
                 }
@@ -129,6 +129,9 @@ goto Username;
                         // move the cursor to the left by one character again
                         Console.SetCursorPosition(pos - 1, Console.CursorTop);
                     }
+if(string.IsNullOrEmpty(password)) {
+Console.Beep(1100,200);
+}
                 }
                 info = Console.ReadKey(true);
             }
@@ -139,6 +142,7 @@ goto Username;
 static void setupEnvironment() {
 // TODO: SETUP environment.
 Console.WriteLine("Sorry, {0}, I'm afraid I can't do that.", username);
+Environment.Exit(0);
 }
 }
 }
