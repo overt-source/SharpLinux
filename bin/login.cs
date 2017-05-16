@@ -3,6 +3,7 @@ using System.IO;
 using System.Diagnostics;
 namespace cmdlinux {
 class login {
+static string username;
 static void Main() {
 // wait 2 seconds to let the user see kernel messages.
 System.Threading.Thread.Sleep(2000);
@@ -18,38 +19,41 @@ string rootpath=Environment.GetEnvironmentVariable("rootpath.sl");
 string motd=File.ReadAllText(""+rootpath+"\\etc\\motd");
 // strip crlf from /etc/hostname
 string LoginHost = System.Text.RegularExpressions.Regex.Replace(LoginHostSource, @"\t|\n|\r", "");
+// let the user see the admin's message.
 Console.WriteLine(motd);
+// the username entry logic
 Username:
 
 Console.Write(""+LoginHost+" Login:");
-string username=Console.ReadLine();
+username=Console.ReadLine();
 // couple of exploit stoppy things
 if(username.Contains(".")) {
 
 goto Username;
 }
 if(username.Contains("/")) {
-Console.WriteLine("Illegal username");
 goto Username;
 }
 if(username.Contains("\\")) {
-Console.WriteLine("Illegal username");
 goto Username;
 }
 if(username=="") {
-Console.WriteLine("Illegal username");
 goto Username;
 }
+// stupid stupid way to bailout if said user doesn't live.
 if(!Directory.Exists(""+rootpath+"\\home\\"+username+"")) {
-Console.WriteLine("Bad Username: "+username+"");
+Console.WriteLine("No such file or directory.");
 System.Threading.Thread.Sleep(100);
 goto Username;
 }
+// password entry logic
 Console.Write("Password:");
+// deligate password entry to the ReadPassword() method for seurity.
 string password=ReadPassword();
-Console.WriteLine("Verifying...");
+// instantiate libSha for password verification
+Console.Clear();
 var libSha = new Process();
-libSha.StartInfo = new ProcessStartInfo( ""+rootpath+"\\libexec\\libSha.exe" ) 
+libSha.StartInfo = new ProcessStartInfo( ""+rootpath+"\\libexec\\libSha.em" ) 
 {
         Arguments = password,
         UseShellExecute = false,
@@ -59,6 +63,7 @@ libSha.StartInfo = new ProcessStartInfo( ""+rootpath+"\\libexec\\libSha.exe" )
 
 libSha.Start();
 
+// capture libSha's output, as that's the sha512 of the password.
 while (!libSha.StandardOutput.EndOfStream) {
 Environment.SetEnvironmentVariable("passwordSha.sl", libSha.StandardOutput.ReadLine());
 // now we have the sha of the password that the user entered.
@@ -66,41 +71,33 @@ Environment.SetEnvironmentVariable("passwordSha.sl", libSha.StandardOutput.ReadL
 }
 passwordSha=Environment.GetEnvironmentVariable("passwordSha.sl");
 Environment.SetEnvironmentVariable("passwordSha.sl", "");
-// now we have the sha of the password, let's see if it is the sha of the user's actual password by reading ~/.passwd.
+// get that out of memory, very very bad!
+// now we read ~/.passwd
 try {
 passwordShaCompare =File.ReadAllText(""+rootpath+"\\home\\"+username+"\\.passwd");
 }
+// catch users who don't have password files (non-interactive entities):
 catch(System.IO.DirectoryNotFoundException EX) {
-Console.WriteLine("No password file or I/O error "+EX.HResult+": "+EX.Message+"");
+Console.WriteLine("You don't exist, Go away!");
+// old unix error message.
 goto Username;
 }
-// do login things.
+// verification of sha against stored one.
+
 if(passwordSha == passwordShaCompare) {
-// yah! they logged in!
-// oh wait, we don't have login code
-// Or do we!
-// oh yes, we do does!
-// let's do some things.
-// such as...
 Console.Clear();
-Console.Beep(650,40);
-Console.Beep(480,40);
-Console.Beep(960,40);
 if(username == "root") {
-Console.Beep(960,40);
 shebang="#";
 }
 else {
 shebang="$";
 
 }
-Console.WriteLine("Prompt: THS-0.1"+shebang+"");
-Environment.Exit(0);
+setupEnvironment();
 }
 // if the user got here, they failed to authenticate
 Console.WriteLine("Login incorrect.");
-Console.Beep(800,100);
-Console.Beep(400,100);
+
 
 goto Username;
 
@@ -114,7 +111,7 @@ goto Username;
                 if (info.Key != ConsoleKey.Backspace)
                 {
                     Console.Write("*");
-                    Console.Beep(400,30);
+                    Console.Beep(11100,3);
                     password += info.KeyChar;
                 }
                 else if (info.Key == ConsoleKey.Backspace)
@@ -139,5 +136,9 @@ goto Username;
             Console.WriteLine();
             return password;
         }
-    }
+static void setupEnvironment() {
+// TODO: SETUP environment.
+Console.WriteLine("Sorry, {0}, I'm afraid I can't do that.", username);
+}
+}
 }
