@@ -53,7 +53,7 @@ System.Threading.Thread.Sleep(1000);
 Console.Clear();
 }
 // password entry logic
-Console.Write("Password:");
+Console.Write(""+username+"@"+LoginHost+"'s Password:");
 // deligate password entry to the ReadPassword() method for security.
 string password=ReadPassword();
 // instantiate libSha for password verification
