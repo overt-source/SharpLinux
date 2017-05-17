@@ -46,6 +46,12 @@ Console.WriteLine("No such file or directory.");
 System.Threading.Thread.Sleep(100);
 goto Username;
 }
+if(username == "root") {
+Console.Beep(600,300);
+Console.WriteLine("Caution: logging in as root. Double check your typing");
+System.Threading.Thread.Sleep(1000);
+Console.Clear();
+}
 // password entry logic
 Console.Write("Password:");
 // deligate password entry to the ReadPassword() method for security.
