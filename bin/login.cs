@@ -4,6 +4,8 @@ using System.Diagnostics;
 namespace cmdlinux {
 class login {
 static string username;
+// this one's needed across all apps.
+static string rootpath=Environment.GetEnvironmentVariable("rootpath.sl");
 static void Main() {
 // wait 2 seconds to let the user see kernel messages.
 System.Threading.Thread.Sleep(2000);
@@ -14,8 +16,7 @@ string shell;
 string shebang;
 string passwordSha;
 string LoginHostSource=Environment.GetEnvironmentVariable("hostname.sl");
-// this one's needed across all apps.
-string rootpath=Environment.GetEnvironmentVariable("rootpath.sl");
+
 string motd=File.ReadAllText(""+rootpath+"\\etc\\motd");
 // strip crlf from /etc/hostname
 string LoginHost = System.Text.RegularExpressions.Regex.Replace(LoginHostSource, @"\t|\n|\r", "");
@@ -53,7 +54,7 @@ System.Threading.Thread.Sleep(1000);
 Console.Clear();
 }
 // password entry logic
-Console.Write(""+username+"@"+LoginHost+"'s Password:");
+Console.Write("Password:");
 // deligate password entry to the ReadPassword() method for security.
 string password=ReadPassword();
 // instantiate libSha for password verification
@@ -147,8 +148,24 @@ Console.Beep(1100,200);
         }
 static void setupEnvironment() {
 // TODO: SETUP environment.
-Console.WriteLine("Sorry, {0}, I'm afraid I can't do that.", username);
-Environment.Exit(0);
+if(username != "root") {
+Environment.SetEnvironmentVariable("shebang.sl", "$");
+}
+else {
+Environment.SetEnvironmentVariable("shebang.sl", "#");
+}
+Environment.SetEnvironmentVariable("username.sl", username);
+Console.Clear();
+var shell = new Process();
+shell.StartInfo = new ProcessStartInfo( ""+rootpath+"\\bin\\tsh" ) 
+{
+        UseShellExecute = false,
+        CreateNoWindow = false
+};
+
+shell.Start();
+shell.WaitForExit();
+
 }
 }
 }

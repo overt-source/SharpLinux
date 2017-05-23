@@ -38,7 +38,7 @@ using System;
 	machinetype + "";
       Environment.SetEnvironmentVariable ("uname.sl", identifyer);
        Console.WriteLine ("I: Starting SharpLinux...");
-      Console.WriteLine ("I: " + identifyer + "");
+
       Console.WriteLine ("I: Verifying file structure ...");
       
 // see if /bin/login lives.
@@ -52,6 +52,8 @@ using System;
 	  Console.WriteLine ("W: Exiting NOW.");
 	  Environment.Exit (1);
 	}
+Console.Beep(850,300);
+      Console.WriteLine ("I: Welcmoe to " + identifyer + "");
       Console.WriteLine ("I: Login binary available.");
       Console.WriteLine ("I: Retrieving hostname...");
       string hostname = File.ReadAllText ("" + rootpath + "\\etc\\hostname");

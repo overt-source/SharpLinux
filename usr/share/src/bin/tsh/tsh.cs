@@ -8,9 +8,9 @@ class sh
 static void Main(string[] args) {
 // import variables to construct prompt.
 string shver="0.1.0-2017-05-08";
-string WhoAmI = Environment.GetEnvironmentVariable("username.shell");
-string PermissionToken = Environment.GetEnvironmentVariable("shebang");
-string RootPath = Environment.GetEnvironmentVariable("rootpath.shell");
+string WhoAmI = Environment.GetEnvironmentVariable("username.sl");
+string PermissionToken = Environment.GetEnvironmentVariable("shebang.sl");
+string RootPath = Environment.GetEnvironmentVariable("rootpath.sl");
 string binary;
 string binary_parameters;
 // done with that.
@@ -24,18 +24,6 @@ Exec=Console.ReadLine();
 // split this bitch.
 string[] Exec_Exec=Exec.Split(';');
 // some basic checks to make sure the user isn't doing insane, demonic things.
-if(Exec_Exec[0]=="tsh") {
-Console.WriteLine("TSH: Recursive shellCall.");
-goto PromptyGoodness;
-}
-if(Exec_Exec[0]=="sh") {
-Console.WriteLine("TSH: Recursive shellCall.");
-goto PromptyGoodness;
-}
-if(Exec_Exec[0]=="login") {
-Console.WriteLine("TSH: Can't login: already logged in");
-goto PromptyGoodness;
-}
 // shell builtins:
 // print working directory.
 if(Exec_Exec[0]=="pwd") {
