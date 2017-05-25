@@ -92,6 +92,8 @@ catch(Exception EX) {
 string LastError=EX.Message;
 binary_parameters="";
 }
+Console.WriteLine("binary);
+Console.WriteLine(binary_parameters);
 var p = new Process();
 p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+"", "binary_parameters" ) 
         {
