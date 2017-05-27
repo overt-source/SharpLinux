@@ -6,29 +6,22 @@ It was inspired by the reimplementations of GNU utilities and other things done 
 Note: source tree is in /usr/share/src to comply with the FHS.
 ## Things that work:
 * the init binary
-* The shell - /bin/tsh (if you can get it running without logging in).
+* The shell - /bin/tsh
 * command detection
 * application execution
+* some basic filesystem commands
 
 
 
 ## Things that don't:
 
-* documentation files
-* some form of a login system
-* adding users
-* basic user rights access
-* basic filesystem commands
-* parts of the package manager
-* text editing (need to find nano for windows).
-* removing users that you added (use rm-d for now).
 * Everything else
 
 
 ## Build instructions:
-Simply clone the repository, then run init from the repo's working dir.
+Simply clone (or download the zip of) the repository, then run init from the repo's working dir.
 Default Logins: (change these *IMMEDIATELY*!):
 * Root: j489ewf)(P*!JK!$(Rg8e4j9tf434rwf3q9f9ae0wf8ikef*J&(*(OJ
-* mortal: mortaluser
+* amy: mortaluser
 
 Enjoy!
