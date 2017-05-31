@@ -165,7 +165,7 @@ shell.StartInfo = new ProcessStartInfo( ""+rootpath+"\\bin\\tsh" )
 
 shell.Start();
 shell.WaitForExit();
-
+Environment.Exit(0);
 }
 }
 }

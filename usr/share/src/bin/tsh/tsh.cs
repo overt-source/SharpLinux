@@ -3,7 +3,7 @@ using System.IO;
 using System.Diagnostics;
 namespace CMDLinux
 {
-class sh
+class tsh
 {
 static void Main(string[] args) {
 // import variables to construct prompt.
@@ -23,7 +23,6 @@ string Exec;
 Exec=Console.ReadLine();
 // split this bitch.
 string[] Exec_Exec=Exec.Split(';');
-// some basic checks to make sure the user isn't doing insane, demonic things.
 // shell builtins:
 // print working directory.
 if(Exec_Exec[0]=="pwd") {
@@ -83,7 +82,7 @@ goto PromptyGoodness;
 // not a shell built-in, apparently.
 // block of code below repeated for all recognised directories (/bin, /sbin root only, and /opt/package/bin/package)
 
-if(File.Exists(""+RootPath+"\\bin\\"+Exec_Exec[0]+".exe")) {
+if(File.Exists(""+RootPath+"\\bin\\"+Exec_Exec[0]+"")) {
 binary=Exec_Exec[0];
 try {
 binary_parameters=Exec_Exec[1];
@@ -93,8 +92,10 @@ catch(Exception EX) {
 string LastError=EX.Message;
 binary_parameters="";
 }
+Console.WriteLine("binary);
+Console.WriteLine(binary_parameters);
 var p = new Process();
-p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+".exe", "binary_parameters" ) 
+p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+"", "binary_parameters" ) 
         {
             UseShellExecute = false
 // make it work like a real shell. We don't want each command spawning it's own window, do we?
@@ -105,7 +106,7 @@ p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+".exe", "binary
 goto PromptyGoodness;
 }
 
-if(File.Exists(""+RootPath+"\\sbin\\"+Exec_Exec[0]+".exe")) {
+if(File.Exists(""+RootPath+"\\sbin\\"+Exec_Exec[0]+"")) {
 binary=Exec_Exec[0];
 try {
 binary_parameters=Exec_Exec[1];
@@ -116,7 +117,7 @@ string LastError=EX.Message;
 binary_parameters="";
 }
 var p = new Process();
-p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+".exe", "binary_parameters" ) 
+p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\sbin\\"+binary+"", "binary_parameters" ) 
         {
             UseShellExecute = false
 // make it work like a real shell. We don't want each command spawning it's own window, do we?
@@ -127,7 +128,7 @@ p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+".exe", "binary
 goto PromptyGoodness;
 }
 
-if(File.Exists(""+RootPath+"\\opt\\"+Exec_Exec[0]+"\bin\\"+Exec_Exec[0]+".exe")) {
+if(File.Exists(""+RootPath+"\\opt\\"+Exec_Exec[0]+"\bin\\"+Exec_Exec[0]+"")) {
 binary=Exec_Exec[0];
 try {
 binary_parameters=Exec_Exec[1];
@@ -138,7 +139,7 @@ string LastError=EX.Message;
 binary_parameters="";
 }
 var p = new Process();
-p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+".exe", "binary_parameters" ) 
+p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\opt\\"+binary+"\\bin\\"+binary+"", "binary_parameters" ) 
         {
             UseShellExecute = false
 // make it work like a real shell. We don't want each command spawning it's own window, do we?
