@@ -66,17 +66,10 @@ goto PromptyGoodness;
 }
 // exit
 if(Exec_Exec[0]=="exit") {
-Console.Write("Terminate TinyShell and logout? y - n   : ");
-string ExitChoice=Console.ReadLine();
-if(ExitChoice=="y") {
 Console.WriteLine("LOGOUT");
 System.Threading.Thread.Sleep(200);
 Console.Clear();
 Environment.Exit(0);
-}
-else {
-goto PromptyGoodness;
-}
 
 }
 // not a shell built-in, apparently.
@@ -92,12 +85,11 @@ catch(Exception EX) {
 string LastError=EX.Message;
 binary_parameters="";
 }
-Console.WriteLine("binary);
-Console.WriteLine(binary_parameters);
 var p = new Process();
-p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+"", "binary_parameters" ) 
+p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\bin\\"+binary+"" ) 
         {
-            UseShellExecute = false
+            UseShellExecute = false,
+Arguments = binary_parameters
 // make it work like a real shell. We don't want each command spawning it's own window, do we?
         };
 
@@ -117,18 +109,26 @@ string LastError=EX.Message;
 binary_parameters="";
 }
 var p = new Process();
-p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\sbin\\"+binary+"", "binary_parameters" ) 
+p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\sbin\\"+binary+"" ) 
         {
-            UseShellExecute = false
+            UseShellExecute = false,
+Arguments = binary_parameters
 // make it work like a real shell. We don't want each command spawning it's own window, do we?
         };
 
-    p.Start();
+// wo there, let's make sure the user is root before starting that
+if(WhoAmI!="root") {
+Console.WriteLine("TSH: Cannot execute: security error.");
+goto PromptyGoodness;
+}
+p.Start();
     p.WaitForExit();
 goto PromptyGoodness;
 }
 
+
 if(File.Exists(""+RootPath+"\\opt\\"+Exec_Exec[0]+"\bin\\"+Exec_Exec[0]+"")) {
+
 binary=Exec_Exec[0];
 try {
 binary_parameters=Exec_Exec[1];
@@ -139,13 +139,14 @@ string LastError=EX.Message;
 binary_parameters="";
 }
 var p = new Process();
-p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\opt\\"+binary+"\\bin\\"+binary+"", "binary_parameters" ) 
+p.StartInfo = new ProcessStartInfo( ""+RootPath+"\\sbin\\"+binary+"" ) 
         {
-            UseShellExecute = false
+            UseShellExecute = false,
+Arguments = binary_parameters
 // make it work like a real shell. We don't want each command spawning it's own window, do we?
         };
 
-    p.Start();
+p.Start();
     p.WaitForExit();
 goto PromptyGoodness;
 }

@@ -12,11 +12,11 @@ using System;
 	string product = "SharpLinux";
       string version = "0.1";
       string codename = "Leilu";
-      string builddate = "2017-05-14";
-      string buildid = "1705140012";
+      string builddate = "2017-06-01";
+      string buildid = "1705140001";
       string machinetype =
 	Environment.GetEnvironmentVariable ("processor_architecture");
-      string buildhost = "Medusa-Cascade";
+      string buildhost = "Gallifrey";
       string compiler = "CSC";
       string identifyer;
       string rootpath;
@@ -53,7 +53,7 @@ using System;
 	  Environment.Exit (1);
 	}
 Console.Beep(850,300);
-      Console.WriteLine ("I: Welcmoe to " + identifyer + "");
+      Console.WriteLine ("I: Welcome to " + identifyer + "");
       Console.WriteLine ("I: Login binary available.");
       Console.WriteLine ("I: Retrieving hostname...");
       string hostname = File.ReadAllText ("" + rootpath + "\\etc\\hostname");
