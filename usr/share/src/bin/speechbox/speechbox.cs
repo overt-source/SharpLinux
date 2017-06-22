@@ -17,6 +17,10 @@ Console.WriteLine("type .quit to exit.");
 input:
 Console.Write("\r\n\r\n\r\n\r\n(SpeechBox)");
 string text=Console.ReadLine();
+if(text==".quit") {
+Console.WriteLine("Bye");
+Environment.Exit(0);
+}
 using (SpeechSynthesizer synth = new SpeechSynthesizer())
 {
 
