@@ -7,18 +7,16 @@ class tsh
 {
 static void Main(string[] args) {
 // import variables to construct prompt.
-string shver="0.1.0-2017-05-08";
+string shver="0.2.1-2017-06-22";
 string WhoAmI = Environment.GetEnvironmentVariable("username.sl");
 string PermissionToken = Environment.GetEnvironmentVariable("shebang.sl");
 string RootPath = Environment.GetEnvironmentVariable("rootpath.sl");
 string binary;
 string binary_parameters;
 // done with that.
-// Tell the user who we are:
-Console.WriteLine("Welcome to TinyShell!\r\nFor a list of the commands installed on your system, type:\r\nHELP\r\nFor information about this shell, type:\r\ntshver\r\n");
 // give them some prompty goodness.
 PromptyGoodness:
-Console.Write("TSH0.1 {0}{1}", WhoAmI, PermissionToken);
+Console.Write("TSH-0.2 {0}", PermissionToken);
 string Exec;
 Exec=Console.ReadLine();
 // split this bitch.
@@ -54,6 +52,11 @@ string LastError=EX.Message;
 catch(System.ArgumentException EX) {
 // no, you can't leave em blank, either.
 Console.WriteLine("TSH: cd: malformed parameters.");
+string LastError=EX.Message;
+}
+catch(System.IO.IOException EX) {
+// What did you do!
+Console.WriteLine("TSH: cd: {0}: I/O error", Exec_Exec[1]);
 string LastError=EX.Message;
 }
 
