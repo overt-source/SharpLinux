@@ -15,8 +15,9 @@ string binary;
 string binary_parameters;
 // done with that.
 // give them some prompty goodness.
+Console.WriteLine("SharpLinux 0.2.0-sarah built-in shell (TSh)\r\n\r\n");
 PromptyGoodness:
-Console.Write("TSH-0.2 {0}", PermissionToken);
+Console.Write(PermissionToken);
 string Exec;
 Exec=Console.ReadLine();
 // split this bitch.
