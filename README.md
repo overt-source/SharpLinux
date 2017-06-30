@@ -21,7 +21,7 @@ Note: source tree is in /usr/share/src to comply with the FHS.
 ## Build instructions:
 Simply clone (or download the zip of) the repository, then run init from the repo's working dir.
 Default Logins: (change these *IMMEDIATELY*!):
-* Root: j489ewf)(P*!JK!$(Rg8e4j9tf434rwf3q9f9ae0wf8ikef*J&(*(OJ
-* amy: mortaluser
+* Root: alpine
+* amy: riversong
 
 Enjoy!
