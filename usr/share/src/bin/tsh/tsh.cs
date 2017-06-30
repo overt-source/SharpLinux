@@ -7,7 +7,7 @@ class tsh
 {
 static void Main(string[] args) {
 // import variables to construct prompt.
-string shver="0.2.1-2017-06-22";
+string shver="0.3.0-2017-06-30";
 string WhoAmI = Environment.GetEnvironmentVariable("username.sl");
 string PermissionToken = Environment.GetEnvironmentVariable("shebang.sl");
 string RootPath = Environment.GetEnvironmentVariable("rootpath.sl");
@@ -97,7 +97,7 @@ goto PromptyGoodness;
 }
 // shell version
 if(Exec_Exec[0]=="tshver") {
-Console.WriteLine("TinyShell - version {0} Copyright 2017. For SharpLinux 0.1 Beta (Leilu series).", shver);
+Console.WriteLine("TinyShell - version {0} Copyright 2017. For SharpLinux 0.1 (Sarah).", shver);
 goto PromptyGoodness;
 }
 // exit
