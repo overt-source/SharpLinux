@@ -17,7 +17,21 @@ string binary_parameters;
 // give them some prompty goodness.
 Console.WriteLine("SharpLinux 0.2.0-sarah built-in shell (TSh)\r\n\r\n");
 PromptyGoodness:
-Console.Write(PermissionToken);
+            string path_orig_prompt = Directory.GetCurrentDirectory();
+// handle being at root dir...
+string path_real_prompt=path_orig_prompt.Replace(RootPath, "/");
+// and not...
+path_real_prompt=path_orig_prompt.Replace(""+RootPath+"\\", "/");
+path_real_prompt=path_real_prompt.Replace("\\", "/");
+if(path_real_prompt.Contains("/cmdlinux")) {
+// at root dir
+Console.Write("/");
+goto TokenExit;
+}
+            Console.Write("{0}", path_real_prompt);
+
+TokenExit:
+Console.Write(" "+PermissionToken+"");
 string Exec;
 Exec=Console.ReadLine();
 // split this bitch.
@@ -25,8 +39,18 @@ string[] Exec_Exec=Exec.Split(';');
 // shell builtins:
 // print working directory.
 if(Exec_Exec[0]=="pwd") {
-            string path = Directory.GetCurrentDirectory();
-            Console.WriteLine("{0}", path);
+            string path_orig = Directory.GetCurrentDirectory();
+// handle being at root dir...
+string path_real=path_orig.Replace(RootPath, "/");
+// and not...
+path_real=path_orig.Replace(""+RootPath+"\\", "/");
+path_real=path_real.Replace("\\", "/");
+if(path_real.Contains("/cmdlinux")) {
+// at root dir
+Console.WriteLine("/");
+goto PromptyGoodness;
+}
+            Console.WriteLine("{0}", path_real);
 goto PromptyGoodness;
 }
 
@@ -36,6 +60,8 @@ goto PromptyGoodness;
 }
 // change directory
 if(Exec_Exec[0]=="cd") {
+// grab the current directory to jump back to if the destination is out of scope.
+string SafeDir=Directory.GetCurrentDirectory();
 try {
 Directory.SetCurrentDirectory(Exec_Exec[1]);
 }
@@ -61,6 +87,12 @@ Console.WriteLine("TSH: cd: {0}: I/O error", Exec_Exec[1]);
 string LastError=EX.Message;
 }
 
+// now we do...
+string CurDir=Directory.GetCurrentDirectory();
+if(!CurDir.Contains(RootPath)) {
+// out of scope!
+Directory.SetCurrentDirectory(SafeDir);
+}
 goto PromptyGoodness;
 }
 // shell version
