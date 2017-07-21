@@ -5,7 +5,11 @@ class ls {
 static void Main() {
 string[] FolderPaths = Directory.GetDirectories(Directory.GetCurrentDirectory());
 string[] filePaths = Directory.GetFiles(Directory.GetCurrentDirectory());
+int total=FolderPaths.Length+filePaths.Length;
+Console.WriteLine("Total "+total+"");
+
 for (int i = 0; i < FolderPaths.Length; ++i) {
+
     string path = FolderPaths[i];
     Console.WriteLine(System.IO.Path.GetFileName(path));
 }

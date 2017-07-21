@@ -9,7 +9,7 @@ static string rootpath=Environment.GetEnvironmentVariable("rootpath.sl");
 static void Main() {
 // wait 2 seconds to let the user see kernel messages.
 System.Threading.Thread.Sleep(2000);
-Console.Clear();
+
 // set up some strings
 string passwordShaCompare;
 string shell;
@@ -43,15 +43,8 @@ goto Username;
 }
 // stupid stupid way to bailout if said user doesn't live.
 if(!Directory.Exists(""+rootpath+"\\home\\"+username+"")) {
-Console.WriteLine("No such file or directory.");
 System.Threading.Thread.Sleep(100);
 goto Username;
-}
-if(username == "root") {
-Console.Beep(600,300);
-Console.WriteLine("Caution: logging in as root. Double check your typing");
-System.Threading.Thread.Sleep(1000);
-Console.Clear();
 }
 // password entry logic
 Console.Write("Password:");
@@ -67,20 +60,26 @@ libSha.StartInfo = new ProcessStartInfo( ""+rootpath+"\\libexec\\libSha.em" )
         RedirectStandardOutput = true,
         CreateNoWindow = true
 };
+Console.WriteLine(".....");
 
 libSha.Start();
-
+Console.WriteLine(".....");
 // capture libSha's output, as that's the sha512 of the password.
 while (!libSha.StandardOutput.EndOfStream) {
+Console.WriteLine(".....");
 Environment.SetEnvironmentVariable("passwordSha.sl", libSha.StandardOutput.ReadLine());
+Console.WriteLine(".....");
 // now we have the sha of the password that the user entered.
 
 }
+Console.WriteLine(".....");
 passwordSha=Environment.GetEnvironmentVariable("passwordSha.sl");
+Console.WriteLine(".....");
 Environment.SetEnvironmentVariable("passwordSha.sl", "");
 // get that out of memory, very very bad!
 // now we read ~/.passwd
 try {
+Console.WriteLine(".....");
 passwordShaCompare =File.ReadAllText(""+rootpath+"\\home\\"+username+"\\.passwd");
 }
 // catch users who don't have password files (non-interactive entities):
@@ -90,7 +89,7 @@ Console.WriteLine("You don't exist. Go away!");
 goto Username;
 }
 // verification of sha against stored one.
-
+Console.WriteLine(".....");
 if(passwordSha == passwordShaCompare) {
 Console.Clear();
 if(username == "root") {

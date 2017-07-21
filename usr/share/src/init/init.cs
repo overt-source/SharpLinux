@@ -12,8 +12,8 @@ using System;
 	string product = "SharpLinux";
       string version = "0.2";
       string codename = "Sara";
-      string builddate = "2017-06-28";
-      string buildid = "170628-0028";
+      string builddate = "Fri Jul 21 16:50:21 NZST 2017";
+      string buildid = "0.2.5-1";
       string machinetype =
 	Environment.GetEnvironmentVariable ("processor_architecture");
       string buildhost = "Gallifrey";
@@ -24,38 +24,34 @@ using System;
       System.Threading.Thread.Sleep (400);
       
 // check for some important files.
-	Console.WriteLine (" Setting up directories...");
-      Console.WriteLine (" clobbering any rootpath.sl...");
+	Console.WriteLine (" Starting the kernel...");
        Environment.SetEnvironmentVariable ("rootpath.sl",
 					     Directory.
 					     GetCurrentDirectory ());
       rootpath = Directory.GetCurrentDirectory ();
-      Console.WriteLine (" Set up directory variables.");
+      Console.WriteLine (".....");
       System.Threading.Thread.Sleep (400);
       identifyer =
 	"" + product + " " + buildhost + " " + version + "-" + codename +
 	"-" + compiler + " " + builddate + "(" + buildid + ") " +
 	machinetype + "";
       Environment.SetEnvironmentVariable ("uname.sl", identifyer);
-       Console.WriteLine (" Starting SharpLinux...");
+       Console.WriteLine (".....");
 
-      Console.WriteLine (" Verifying file structure ...");
+      Console.WriteLine (".....");
       
 // see if /bin/login lives.
 // actually, we see if it doesn't, and quit if so.
 	if (!File.Exists ("" + rootpath + "\\bin\\login."))
 	
 	{
-	  Console.WriteLine ("E: Missing Crucial file.");
-	  Console.WriteLine ("E: /bin/login: no such file or directory.");
-	  Console.WriteLine ("E: Kernel failed to start.");
-	  Console.WriteLine (" Exiting NOW.");
+	  Console.WriteLine ("Error 0x80000002: missing file /bin/login");
+	  Console.WriteLine ("HALT!");
 	  Environment.Exit (1);
 	}
-Console.Beep(850,300);
       Console.WriteLine (identifyer);
-      Console.WriteLine (" Login binary available.");
-      Console.WriteLine (" Retrieving hostname...");
+      Console.WriteLine (".....");
+      Console.WriteLine (".....");
       string hostname = File.ReadAllText ("" + rootpath + "\\etc\\hostname");
       Environment.SetEnvironmentVariable ("hostname.sl", hostname);
       Console.WriteLine ("TTY1 SharpLinux {0}", hostname);
