@@ -38,6 +38,13 @@ goto Username;
 if(username.Contains("\\")) {
 goto Username;
 }
+if(username.Contains(" ")) {
+goto Username;
+}
+
+if(username.Contains("	")) {
+goto Username;
+}
 if(username=="") {
 goto Username;
 }
