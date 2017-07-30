@@ -9,15 +9,6 @@ using System;
     {
       
 // some lovely, lovely globals.
-	string product = "SharpLinux";
-      string version = "0.2";
-      string codename = "Sara";
-      string builddate = "Fri Jul 21 16:50:21 NZST 2017";
-      string buildid = "0.2.5-1";
-      string machinetype =
-	Environment.GetEnvironmentVariable ("processor_architecture");
-      string buildhost = "Gallifrey";
-      string compiler = "CSC";
       string identifyer;
       string rootpath;
        Console.Clear ();
@@ -31,10 +22,9 @@ using System;
       rootpath = Directory.GetCurrentDirectory ();
       Console.WriteLine (".....");
       System.Threading.Thread.Sleep (400);
-      identifyer =
-	"" + product + " " + buildhost + " " + version + "-" + codename +
-	"-" + compiler + " " + builddate + "(" + buildid + ") " +
-	machinetype + "";
+      identifyer =File.ReadAllText(""+rootpath+"/etc/os-release");
+
+
       Environment.SetEnvironmentVariable ("uname.sl", identifyer);
        Console.WriteLine (".....");
 

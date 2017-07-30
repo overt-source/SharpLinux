@@ -15,7 +15,7 @@ string binary;
 string binary_parameters;
 // done with that.
 // give them some prompty goodness.
-Console.WriteLine("SharpLinux 0.2.5-1-sarah built-in shell (TSh)\r\n\r\n");
+Console.WriteLine("Welcome to SharpLinux Sara.\r\n\r\n");
 PromptyGoodness:
             string path_orig_prompt = Directory.GetCurrentDirectory();
 // handle being at root dir...
