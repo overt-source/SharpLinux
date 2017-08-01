@@ -6,8 +6,9 @@ namespace CMDLinux
 class tsh
 {
 static void Main(string[] args) {
+
 // import variables to construct prompt.
-string shver="0.4.00 (2017-01-21 18:08:51 NZST)";
+string shver="0.5.00 (2017-08-11 14:26:41 NZST)";
 string WhoAmI = Environment.GetEnvironmentVariable("username.sl");
 string PermissionToken = Environment.GetEnvironmentVariable("shebang.sl");
 string RootPath = Environment.GetEnvironmentVariable("rootpath.sl");
@@ -34,6 +35,7 @@ TokenExit:
 Console.Write(" "+PermissionToken+"");
 string Exec;
 Exec=Console.ReadLine();
+
 // split this bitch.
 string[] Exec_Exec=Exec.Split(';');
 // shell builtins:
@@ -190,6 +192,8 @@ goto PromptyGoodness;
 // the user only gets here if all other options have turned up nothing.
 Console.WriteLine("TSh: "+Exec_Exec[0]+": Not Found");
 goto PromptyGoodness;
+
 }
+
 }
 }
