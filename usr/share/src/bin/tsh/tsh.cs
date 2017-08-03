@@ -8,7 +8,7 @@ class tsh
 static void Main(string[] args) {
 
 // import variables to construct prompt.
-string shver="0.5.00 (2017-08-11 14:26:41 NZST)";
+string shver="0.6.00 (2017-08-03 14:13:12 NZST)";
 string WhoAmI = Environment.GetEnvironmentVariable("username.sl");
 string PermissionToken = Environment.GetEnvironmentVariable("shebang.sl");
 string RootPath = Environment.GetEnvironmentVariable("rootpath.sl");
@@ -16,7 +16,8 @@ string binary;
 string binary_parameters;
 // done with that.
 // give them some prompty goodness.
-Console.WriteLine("Welcome to SharpLinux Sara.\r\n\r\n");
+Console.WriteLine(File.ReadAllText(""+RootPath+"\\etc\\shell.msg"));
+
 PromptyGoodness:
             string path_orig_prompt = Directory.GetCurrentDirectory();
 // handle being at root dir...
@@ -99,7 +100,7 @@ goto PromptyGoodness;
 }
 // shell version
 if(Exec_Exec[0]=="tshver") {
-Console.WriteLine("TinyShell - version {0} Copyright 2017. Compiled 2017-07-21 at Gallifrey", shver);
+Console.WriteLine("TinyShell - version {0} Copyright 2017. Compiled 2017-08-03 at Medusa-Cascade", shver);
 goto PromptyGoodness;
 }
 // exit

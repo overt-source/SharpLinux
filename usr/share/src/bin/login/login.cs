@@ -25,7 +25,7 @@ Console.WriteLine(motd);
 // the username entry logic
 Username:
 
-Console.Write(""+LoginHost+" Login:");
+Console.Write("Login on "+LoginHost+" :");
 username=Console.ReadLine();
 // couple of exploit stoppy things
 if(username.Contains(".")) {
@@ -54,7 +54,7 @@ System.Threading.Thread.Sleep(100);
 goto Username;
 }
 // password entry logic
-Console.Write("Password:");
+Console.Write("Enter password for user "+username+" on "+LoginHost+":");
 // deligate password entry to the ReadPassword() method for security.
 string password=ReadPassword();
 // instantiate libSha for password verification
