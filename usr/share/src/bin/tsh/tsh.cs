@@ -16,6 +16,7 @@ string binary;
 string binary_parameters;
 // done with that.
 // give them some prompty goodness.
+Console.WriteLine("SharpLinux CoreUtils v0.3.0-00 (2017-09-05 11:58:21 NZST) built-in shell (TSH).\n\n\n\n\n\n\n");
 Console.WriteLine(File.ReadAllText(""+RootPath+"\\etc\\shell.msg"));
 
 PromptyGoodness:
