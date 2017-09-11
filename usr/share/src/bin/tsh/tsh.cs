@@ -26,7 +26,7 @@ string path_real_prompt=path_orig_prompt.Replace(RootPath, "/");
 // and not...
 path_real_prompt=path_orig_prompt.Replace(""+RootPath+"\\", "/");
 path_real_prompt=path_real_prompt.Replace("\\", "/");
-if(path_real_prompt.Contains("/cmdlinux")) {
+if(path_real_prompt.Contains("/SharpLinux")) {
 // at root dir
 Console.Write("/");
 goto TokenExit;
