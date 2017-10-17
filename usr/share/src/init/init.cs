@@ -27,6 +27,7 @@ Console.WriteLine (" Starting the kernel...");
  Console.WriteLine (".....");
 
 Console.WriteLine (".....");
+Console.WriteLine("Detected .net hypervisor version "+Environment.Version+"");
 
 // see if /bin/login lives.
 // actually, we see if it doesn't, and quit if so.
@@ -40,7 +41,8 @@ if (!File.Exists ("" + rootpath + "\\bin\\login."))
 Console.WriteLine (identifyer);
 Console.WriteLine (".....");
 Console.WriteLine (".....");
-string hostname = File.ReadAllText ("" + rootpath + "\\etc\\hostname");
+Console.WriteLine("mapped "+Environment.WorkingSet+" memory ... success.");
+string hostname = File.ReadAllText ("" + rootpath + "\\etc\\hostname");
 Environment.SetEnvironmentVariable ("hostname.sl", hostname);
 Console.WriteLine ("TTY1 SharpLinux {0}", hostname);
 var LoginBin = new Process ();
