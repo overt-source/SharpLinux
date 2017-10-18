@@ -15,7 +15,7 @@ Console.Write("D ");
 Console.Write("WIN:");
 Console.Write(System.IO.File.GetAccessControl(path).GetOwner(typeof(System.Security.Principal.NTAccount)).ToString());
 Console.Write(" ");
-Console.Write(path.Length);
+Console.Write(System.IO.Path.GetFileName(path).Length);
 Console.Write(" ");
 Console.Write(System.IO.Path.GetFileName(path));
 Console.Write("\r\n");
@@ -28,7 +28,7 @@ Console.Write(". ");
 Console.Write("WIN:");
 Console.Write(System.IO.File.GetAccessControl(path).GetOwner(typeof(System.Security.Principal.NTAccount)).ToString());
 Console.Write(" ");
-Console.Write(path.Length);
+Console.Write(System.IO.Path.GetFileName(path).Length);
 Console.Write(System.IO.Path.GetFileName(path));
 Console.Write("\r\n");
 }
