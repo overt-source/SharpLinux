@@ -25,7 +25,7 @@ Console.WriteLine(motd);
 // the username entry logic
 Username:
 
-Console.Write("Login on "+LoginHost+" :");
+Console.Write("/dev/console "+LoginHost+" login:");
 username=Console.ReadLine();
 // couple of exploit stoppy things
 if(username.Contains(".")) {
@@ -54,7 +54,7 @@ System.Threading.Thread.Sleep(100);
 goto Username;
 }
 // password entry logic
-Console.Write("Enter password for user "+username+" on "+LoginHost+":");
+Console.Write("password for "+username+"@"+LoginHost+":");
 // deligate password entry to the ReadPassword() method for security.
 string password=ReadPassword();
 // instantiate libSha for password verification
@@ -109,7 +109,7 @@ shebang="$";
 setupEnvironment();
 }
 // if the user got here, they failed to authenticate
-Console.WriteLine("Login incorrect.");
+Console.WriteLine("Bad Password.");
 
 
 goto Username;
@@ -123,8 +123,8 @@ goto Username;
             {
                 if (info.Key != ConsoleKey.Backspace)
                 {
-                    Console.Write(" ");
-                    Console.Beep(11100,3);
+                    Console.Write("*");
+
                     password += info.KeyChar;
                 }
                 else if (info.Key == ConsoleKey.Backspace)
@@ -143,7 +143,7 @@ goto Username;
                         Console.SetCursorPosition(pos - 1, Console.CursorTop);
                     }
 if(string.IsNullOrEmpty(password)) {
-Console.Beep(1100,200);
+Console.Beep(800,20);
 }
                 }
                 info = Console.ReadKey(true);

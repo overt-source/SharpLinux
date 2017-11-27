@@ -8,17 +8,21 @@ class tsh
 static void Main(string[] args) {
 
 // import variables to construct prompt.
+string tshver="0.3.0-2-release";
 string WhoAmI = Environment.GetEnvironmentVariable("username.sl");
+string WhereAmI = Environment.GetEnvironmentVariable("hostname.sl");
 string PermissionToken = Environment.GetEnvironmentVariable("shebang.sl");
 string RootPath = Environment.GetEnvironmentVariable("rootpath.sl");
 string binary;
 string binary_parameters;
 // done with that.
 // give them some prompty goodness.
-Console.WriteLine("SharpLinux CoreUtils v0.3.0-01 (2017-11-26 15:23:24 NZDT) built-in shell (TSH).\n\n\n\n\n\n\n");
+Console.WriteLine("SharpLinux CoreUtils v0.3.0-02 (2017-11-27 22:58:11 NZDT) built-in shell (TSH).\n\n\n\n\n\n\n");
 Console.WriteLine(File.ReadAllText(""+RootPath+"\\etc\\shell.msg"));
 
 PromptyGoodness:
+Console.Write(""+tshver+" ");
+Console.Write(""+WhoAmI+"@"+WhereAmI+" ");
             string path_orig_prompt = Directory.GetCurrentDirectory();
 // handle being at root dir...
 string path_real_prompt=path_orig_prompt.Replace(RootPath, "/");
