@@ -8,7 +8,6 @@ class tsh
 static void Main(string[] args) {
 
 // import variables to construct prompt.
-string shver="0.6.00 (2017-08-03 14:13:12 NZST)";
 string WhoAmI = Environment.GetEnvironmentVariable("username.sl");
 string PermissionToken = Environment.GetEnvironmentVariable("shebang.sl");
 string RootPath = Environment.GetEnvironmentVariable("rootpath.sl");
@@ -16,7 +15,7 @@ string binary;
 string binary_parameters;
 // done with that.
 // give them some prompty goodness.
-Console.WriteLine("SharpLinux CoreUtils v0.3.0-00 (2017-09-05 11:58:21 NZST) built-in shell (TSH).\n\n\n\n\n\n\n");
+Console.WriteLine("SharpLinux CoreUtils v0.3.0-01 (2017-11-26 15:23:24 NZDT) built-in shell (TSH).\n\n\n\n\n\n\n");
 Console.WriteLine(File.ReadAllText(""+RootPath+"\\etc\\shell.msg"));
 
 PromptyGoodness:
@@ -31,6 +30,12 @@ if(path_real_prompt.Contains("/SharpLinux")) {
 Console.Write("/");
 goto TokenExit;
 }
+if(path_real_prompt.Contains("/sharplinux")) {
+// at root dir if user cloned it with a lowercase URL.
+Console.Write("/");
+goto TokenExit;
+}
+
             Console.Write("{0}", path_real_prompt);
 
 TokenExit:
@@ -101,7 +106,7 @@ goto PromptyGoodness;
 }
 // shell version
 if(Exec_Exec[0]=="tshver") {
-Console.WriteLine("TinyShell - version {0} Copyright 2017. Compiled 2017-08-03 at Medusa-Cascade", shver);
+Console.WriteLine("TinyShell from SharpLinux CoreUtils version 0.3.01 Copyright 2017. Compiled 2017-11-26 at WinStation");
 goto PromptyGoodness;
 }
 // exit
